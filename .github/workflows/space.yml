@@ -1,4 +1,4 @@
-name: Generate Space Shooter
+name: Generate Pacman
 
 on:
   schedule:
@@ -12,9 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: yoshi389111/gh-space-shooter@main
+      - uses: Platane/snk@v3
         with:
           github_user_name: shryssssss-maker
+          outputs: |
+            dist/pacman.svg
+            dist/pacman-dark.svg?palette=github-dark
 
       - uses: crazy-max/ghaction-github-pages@v3
         with:
