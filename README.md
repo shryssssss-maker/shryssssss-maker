@@ -13,6 +13,7 @@
 </p>
 
 <!-- 🌊 Activity Graph -->
-![Contribution Graph](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=shryssssss-maker&theme=radical)
-
+<p align="center">
+ <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=shryssssss-maker&theme=radical)
+</p>
 
