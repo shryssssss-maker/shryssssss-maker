@@ -13,6 +13,6 @@
 </p>
 
 <!-- 🌊 Activity Graph -->
-![Contribution Graph](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Mayur-Pagote&theme=radical)
+![Contribution Graph](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=shryssssss-maker&theme=radical)
 
 
