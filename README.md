@@ -13,7 +13,7 @@
 </p>
 
 <!-- 🌊 Activity Graph -->
-<p>![languages-default](https://stats.pphat.top/languages?username=pphatdev)</p>
+<p><img src="https://stats.pphat.top/languages?username=shryssssss-maker" /> </p>
 
 <!-- 🌊 Another one -->
 <p><img align="center" src="https://zane-nostalgia.kiyo-n-zane.com/scenes/rainy/api?height=200&width=2000&density=20&banner" /> </p>
