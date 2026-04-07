@@ -13,9 +13,8 @@
 </p>
 
 <!-- 🌊 Activity Graph -->
-<p align="center">
- <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=shryssssss-maker&theme=radical">
-</p>
+<p>![languages-default](https://stats.pphat.top/languages?username=pphatdev)</p>
+
 <!-- 🌊 Another one -->
 <p><img align="center" src="https://zane-nostalgia.kiyo-n-zane.com/scenes/rainy/api?height=200&width=2000&density=20&banner" /> </p>
 
