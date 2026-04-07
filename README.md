@@ -9,7 +9,7 @@
 <h1 align="center">Hi 👋, I'm Shreyas Singh</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?size=25&duration=3000&color=00F7FF&center=true&vCenter=true&width=600&lines=Btech+Student;Developer;Learning+ML;Building+cool+projects;Creating+more+bugs+than+features">
+  <img src="https://readme-typing-svg.herokuapp.com?size=25&duration=3000&color=00F7FF&center=true&vCenter=true&width=600&lines=Btech+Student;Developer;Learning+ML;Building+cool+projects;Creating+more+bugs+than+features;+Grinding+my+way+to+cracked+dev+status">
 </p>
 
 <!-- 🌊 Activity Graph -->
