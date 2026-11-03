@@ -23,9 +23,9 @@ jobs:
         run: python3 scripts/compose_profile.py --refresh-activity
       - name: Commit updated artwork
         run: |
-          if git diff --quiet -- assets/profile.svg design/activity.json; then
+          if git diff --quiet -- assets/profile.svg assets/profile-static.svg design/activity.json; then
             exit 0
           fi
-          git add assets/profile.svg design/activity.json
+          git add assets/profile.svg assets/profile-static.svg design/activity.json
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Refresh profile contribution artwork"
           git push

@@ -53,6 +53,8 @@ def compose():
 {activity()}
 </svg>'''
     target=ROOT/'assets/profile.svg';target.write_text(output,encoding='utf-8');ET.parse(target)
+    static=f'<svg xmlns="http://www.w3.org/2000/svg" width="1136" height="1384" viewBox="0 0 1136 1384" role="img" aria-labelledby="title"><title id="title">Shreyas Singh — developer, builder, student</title><image width="1136" height="1384" href="{source}"/>{activity()}</svg>'
+    (ROOT/'assets/profile-static.svg').write_text(static,encoding='utf-8')
     print(f'GPU orbital profile: {target.stat().st_size/1024/1024:.2f} MiB')
 
 if __name__=='__main__':
