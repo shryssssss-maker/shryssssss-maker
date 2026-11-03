@@ -1,17 +1,19 @@
 # Profile artwork
 
-Original procedural particle artwork for Shreyas Singh's GitHub profile.
+The profile is one continuous 1136 × 1384 SVG, matching the supplied reference's layout: terminal introduction, serif name, particle planet, four metadata groups, four project cards, a two-row technology grid beside real GitHub activity, and particle hills with footer icons.
 
-The desktop and mobile heroes use a stippled hemisphere, rotating annular dust populations, projected latitude particles and grazing streams. The footer uses layered particle ridgelines, drifting motes and travelling wind highlights. All motion uses native SVG animation; no scripts, embedded HTML, remote fonts, trackers or image-generation services are needed.
+The planet has rotating orbital filaments, diffuse dust, moving surface particles and grazing streams. Wind follows the hills' ridgelines. Motion runs inside GitHub's image rendering without scripts, external fonts, embedded HTML or third-party image widgets. Reduced-motion preferences show static rings and hide moving surface particles, streams and wind.
 
-The README uses relative asset paths and a `picture` element for the mobile composition. Project links and descriptions remain ordinary HTML/Markdown. GitHub's own live contribution calendar remains beneath the profile README rather than being replaced by a decorative imitation.
+GitHub does not expose links inside an embedded SVG image as separate clickable targets. The README's compact, collapsed “Project & contact links” section provides working native links and readable project names without breaking up the reference layout.
 
-Regenerate with Python 3:
+Activity squares use actual public GitHub contribution levels. Their daily refresh updates the checked-in data and the complete SVG. Future dates are omitted. The graph's pattern is intentionally allowed to differ from the reference, whose squares are example data.
 
-```sh
-python scripts/generate_artwork.py
-```
+Regenerate with Python 3 (standard library only):
 
-Assets are deterministic. The images have accessible titles/descriptions and README alternative text. A reduced-motion media query shows static rings and hides the moving surface particles, crossing streams and footer wind.
+    python scripts/compose_profile.py
 
-Project/contact text was checked against the owner's `portf`, `NyayAI`, `ARTERY`, and `cache-simulator` repositories. Education, location and coffee detail follow the supplied reference.
+Refresh public activity and regenerate:
+
+    python scripts/compose_profile.py --refresh-activity
+
+Logos are from Simple Icons 13.21.0. See design/CREDITS.md. The remaining vector/particle artwork is original code.
