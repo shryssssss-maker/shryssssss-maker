@@ -37,10 +37,13 @@ with typical intervals around 89 ms. The replacement, tested at the full native
 In a separate headless Chrome run with GPU acceleration disabled and main-thread
 CPU throttling set to 6×, it produced 147 draws in five seconds (median 31.9 ms).
 Draw counts measure compositor activity, not a promise about every unique frame.
+The hosted GitHub preview produced 150 display draws in five seconds at 838 px
+wide (median 33.4 ms, 95th percentile 46.6 ms), and screenshots confirmed motion.
 Main-thread throttling does not emulate an entire weaker CPU or GPU. These tests
 support much better playback but do not guarantee every low-end PC.
 
-The cost is a larger initial download. Lossless animated WebP was chosen after
+The cost is a larger initial download: the SVG is 40.73 MiB, including a 29.29 MiB
+lossless WebP. Lossless animated WebP was chosen after
 comparing it with lossless APNG (about 77 MB). No palette reduction, lossy
 compression, resolution reduction, or dropped source frames was used.
 

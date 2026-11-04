@@ -96,7 +96,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--channel', default=None, help='Installed browser, e.g. chrome')
     parser.add_argument('--frames-dir', type=Path, help='Reuse existing native PNG captures')
-    parser.add_argument('--method', type=int, choices=range(7), default=6)
+    parser.add_argument('--method', type=int, choices=range(7), default=4)
     args = parser.parse_args()
     if args.frames_dir:
         bake(args.frames_dir, args.method, 'Chrome 156.0.8078.80 / existing native captures')
