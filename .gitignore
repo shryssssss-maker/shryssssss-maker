@@ -1,3 +1,5 @@
 .render-cache/
 __pycache__/
 design/baked-orbits.webp
+design/reference.webp
+design/body-reference.webp

@@ -1,0 +1,12 @@
+{
+  "width": 1136,
+  "height": 1384,
+  "split_y": 512,
+  "animation": "assets/orbit-f87556620df6.webp",
+  "poster": "assets/poster-576700f1946b.webp",
+  "frames": 120,
+  "fps": 30,
+  "loop_ms": 4000,
+  "source_sha256": "ac9bcba2189350e9beaab3d4ddcb1410f557298905a794d400d06c46afdadb56",
+  "lookup_sha256": "48c1e5fe83b7d9fa9d807b3254ba76dca52a01f10afc2b78a505b7a8d83f31b8"
+}

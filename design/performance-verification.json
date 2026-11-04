@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-05",
+  "environment": {
+    "cpu": "Intel Core i7-13650HX",
+    "gpu": "Intel UHD Graphics",
+    "browser": "Chrome 156.0.8078.80"
+  },
+  "headed": {
+    "draws": 174,
+    "medianMs": 32.744,
+    "p95Ms": 43.268,
+    "geometry": {
+      "gap": 0,
+      "total": 1384
+    }
+  },
+  "softwareCold": {
+    "draws": 129,
+    "medianMs": 31.636,
+    "p95Ms": 77.116,
+    "gpuDisabled": true,
+    "mainThreadThrottle": 6
+  },
+  "softwareWarmAndResume": {
+    "gpuDisabled": true,
+    "mainThreadThrottle": 6,
+    "warm": {
+      "windowMs": 5000,
+      "draws": 137,
+      "medianMs": 32.978,
+      "p95Ms": 59.952
+    },
+    "resume": {
+      "windowMs": 3000,
+      "draws": 90,
+      "medianMs": 33.28,
+      "p95Ms": 34.542
+    }
+  },
+  "coldTransfer": {
+    "rateBytesPerSecond": 1048576,
+    "observations": [
+      {
+        "kind": "old",
+        "firstSubstantialArtworkMs": null,
+        "completeAtEnd": false,
+        "capturedImages": 0,
+        "firstDustMs": null,
+        "firstMotionMs": null
+      },
+      {
+        "kind": "new",
+        "firstSubstantialArtworkMs": 325,
+        "completeAtEnd": false,
+        "capturedImages": 18,
+        "firstDustMs": 325,
+        "firstMotionMs": 467
+      }
+    ]
+  },
+  "limitations": [
+    "Compositor draw counts are not counts of unique animation frames.",
+    "Six-times main-thread throttling does not emulate an entire weaker computer.",
+    "Cold-load observations use a localhost stream limited to 1,048,576 bytes/s; public-host latency varies.",
+    "An initial loop can buffer when network throughput is lower than the animation bitrate."
+  ]
+}

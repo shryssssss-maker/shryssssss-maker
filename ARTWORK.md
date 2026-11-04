@@ -1,75 +1,85 @@
-# Reference artwork and lossless animation
+# Particle profile artwork
 
-The owner's supplied 1136 × 1384 PNG remains unchanged in `design/reference.png`.
-The particle paths, planet lighting, hills, sun, timing, and four-second loop are
-the same as the previous lookup-filter animation: 120 frames at 30 fps.
+The original supplied PNG remains byte-identical in `design/reference.png`.
+The planet's visible surface and rim, the hills, and the small sun are fixed to
+that reference. Only the orbital dust moves, including the stream passing in
+front of the planet. Its original 120 samples, 33/34 ms frame durations, four-second
+loop, point texture, and native 1136 × 1384 layout are retained.
 
-The published SVG now contains one embedded **lossless animated WebP** atlas.
-Two clipped uses of that shared image show the hero and hills in their original
-positions. There are **no runtime SVG filters, displacement maps, scripts, or
-particle calculations**. Typography, cards, logos, and source texture remain
-at native resolution. The contribution panel still refreshes daily from actual
-public GitHub activity. The README serves the static source when reduced motion
-is requested; project/contact links remain in its expandable section.
+## Serving and caching
 
-## Visual verification
+The README displays two adjacent images with zero space between them:
 
-Each frame was captured in Chrome 156.0.8078.80 at native resolution, using the
-original GPU-generated lookup frame as a static input to the original filter
-pipeline. This preserves the pipeline's exact raster result rather than
-approximating the motion with a new simulation.
+- An ordinary, lossless animated WebP for rows 0–511. Its filename contains its
+  content hash and stays unchanged during contribution refreshes.
+- `assets/profile-body.svg` for rows 512–1383. It embeds a lossless reference
+  bitmap and overlays actual public GitHub contribution data.
 
-All 120 decoded lossless frames were reconstructed into the full layout and
-compared with those captures: **188,666,880 pixels, zero changed pixels**.
-Native-resolution browser screenshots of the replacement composition at frames
-0, 60, and 119 also had zero differences outside the separately refreshed
-contribution panel. The encoder preserves the 33/34 ms frame durations and
-infinite looping. Checksums and durations are in `design/bake-verification.json`.
-Pixel equality refers to these native-resolution captured frames; browsers can
-resample images differently at other display scales.
+The 512-pixel boundary was verified in a browser at native resolution. It avoids
+an observed image-resampling difference with an odd-height split. There are no
+live displacement filters, scripts, simulations, or animated hills in the README.
+Reduced-motion preferences select the small still hero instead of the animation.
+`assets/profile.svg` and `profile-static.svg` are small, static full-layout views
+for compatibility; the README does not download them.
 
-## Performance verification
+The new normal-motion payload is approximately 17.30 MB / 16.50 MiB including the
+gzipped static section, versus the previous 32.31 MB / 30.81 MiB gzip transfer:
+about 46% less data. Direct image serving also lets the browser display incoming
+frames before the complete file has downloaded. The body and activity updates
+no longer invalidate the large animation asset.
 
-On the owner's i7-13650HX laptop, Chrome 156 used Intel UHD via ANGLE/D3D11.
-The original GitHub desktop layout produced about 11–13 display draws per second
-with typical intervals around 89 ms. The replacement, tested at the full native
-1136 × 1384 size, produced 153 display draws in five seconds (median 31.5 ms).
-In a separate headless Chrome run with GPU acceleration disabled and main-thread
-CPU throttling set to 6×, it produced 147 draws in five seconds (median 31.9 ms).
-Draw counts measure compositor activity, not a promise about every unique frame.
-The hosted GitHub preview produced 150 display draws in five seconds at 838 px
-wide (median 33.4 ms, 95th percentile 46.6 ms), and screenshots confirmed motion.
-Main-thread throttling does not emulate an entire weaker CPU or GPU. These tests
-support much better playback but do not guarantee every low-end PC.
+Project/contact links remain in the README's expandable section. Links inside
+image pixels are not separate clickable targets on GitHub.
 
-The cost is a larger initial download: the SVG is 40.73 MiB, including a 29.29 MiB
-lossless WebP. Lossless animated WebP was chosen after
-comparing it with lossless APNG (about 77 MB). No palette reduction, lossy
-compression, resolution reduction, or dropped source frames was used.
+## Verification
+
+`design/bake-verification.json` records source/animation hashes and the codec
+checks. All 120 decoded frames match the intended frozen-world capture exactly:
+188,666,880 full-frame pixels compared, zero differences. The source reference
+is also checked for the complete planet silhouette outside the passing dust,
+and for the hills and sun. A separate comparison checked 63,639,360 pixels in
+the untouched orbital regions against the previous animation, with zero changes.
+
+Native-resolution browser comparison of the two-image layout found zero pixel
+differences outside the separately refreshed activity panel. The native layout
+height is 1384 pixels and the inter-image gap is zero.
+
+In the controlled localhost test at 1 MiB/s, screencast image analysis observed
+substantial hero artwork at 325 ms and moving orbital pixels at 467 ms, with the
+file still downloading. The previous gzip-served SVG showed no artwork during
+the 6.5-second observation. These are controlled observations, not a guarantee
+of public-server timing. On a connection slower than the animation bitrate, the
+initial loop can still buffer until enough data has arrived.
+
+The source remains 30 fps. The Intel-GPU test had a median display interval of
+32.74 ms. With GPU acceleration disabled and 6× main-thread throttling, median
+intervals were about 33 ms; after a tab switch, 90 display draws were observed
+in three seconds. Some initial software runs had longer pauses. Compositor draw
+counts do not establish that every unique frame was presented, and main-thread
+throttling does not emulate a whole low-end computer.
+See `design/performance-verification.json` and `LOADING-RESEARCH.md`.
 
 ## Rebuild
 
-Daily contribution refresh and composition use only Python's standard library:
+The daily refresh uses Python's standard library only:
 
     python scripts/compose_profile.py --refresh-activity
 
-Compose without fetching contribution data:
+It reuses the lossless bitmaps already embedded in the small static SVGs, so a
+fresh checkout needs no GPU, browser package, or image encoder for this command.
+Running without `--refresh-activity` composes from cached contribution data.
 
-    python scripts/compose_profile.py
-
-The baked WebP embedded in the checked-in SVG makes these commands independent
-of GPU/browser tooling. The compositor reuses that embedded resource. An optional
-local `design/baked-orbits.webp` overrides it after a new offline bake; this
-duplicate binary is ignored by Git.
-To intentionally regenerate the motion, install the optional offline dependencies:
+To deliberately rebuild the animation offline:
 
     python -m pip install -r scripts/requirements-render.txt -r scripts/requirements-bake.txt
     python -m playwright install chromium
     python scripts/render_orbits.py
     python scripts/bake_profile.py
-    python scripts/compose_profile.py
 
-`bake_profile.py --channel chrome` uses installed Google Chrome instead.
-The baker checks every decoded frame before replacing the cached animation.
-The original renderer is retained in `scripts/compose_live_filters.py` for the
-offline capture step; it is not used by the README or the scheduled refresh.
+Use `--channel chrome` to capture with installed Chrome. The baker captures the
+original and frozen-world reference renderers, preserves original orbital pixels,
+pins the complete planet rim, verifies all decoded frames, and creates the still
+assets and manifest before composing the README. Its temporary directory can be
+set with `--work-dir`. Local derived `design/reference.webp` and
+`design/body-reference.webp` caches are ignored by Git; the checked-in SVGs carry
+the same data for daily rebuilds. The original lookup renderer is used only offline.

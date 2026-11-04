@@ -1,7 +1,6 @@
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/profile-static.svg?v=lossless-native-120">
-  <img src="assets/profile.svg?v=lossless-native-120" width="100%" alt="Shreyas Singh — developer, builder and student. B.Tech ECE at Manipal University Jaipur, 2025–2029. Building where systems, AI and real-world impact intersect. Featured projects: JanSamadhan, NyayaAI, ARTERY and Adaptive Cache Simulator. Tech stack and real GitHub activity, with an animated particle planet and wind flowing over the hills.">
-</picture>
+<!-- profile-artwork:start -->
+<p><picture><source media="(prefers-reduced-motion: reduce)" srcset="assets/poster-576700f1946b.webp"><img src="assets/orbit-f87556620df6.webp" width="100%" align="top" alt="Shreyas Singh — building where systems, AI and real-world impact intersect. Particles orbit a still planet."></picture><img src="assets/profile-body.svg" width="100%" align="top" alt="B.Tech ECE at Manipal University Jaipur, 2025–2029. JanSamadhan, NyayaAI, ARTERY and Cache Simulator. Tech stack, actual GitHub activity, and the original still hills and sun."></p>
+<!-- profile-artwork:end -->
 
 <details>
 <summary>Project & contact links</summary>

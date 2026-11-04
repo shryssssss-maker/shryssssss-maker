@@ -1,15 +1,7 @@
 {
   "frames": 120,
   "fps": 30,
-  "seconds": 4,
-  "resolution": [
-    1136,
-    1384
-  ],
-  "atlas_resolution": [
-    1136,
-    624
-  ],
+  "loop_ms": 4000,
   "durations_ms": [
     33,
     34,
@@ -132,11 +124,23 @@
     34,
     33
   ],
-  "pixels_compared": 188666880,
+  "resolution": [
+    1136,
+    1384
+  ],
+  "animated_region": [
+    0,
+    0,
+    1136,
+    512
+  ],
+  "full_frame_pixels_compared": 188666880,
   "changed_pixels": 0,
-  "source_sha256": "ac9bcba2189350e9beaab3d4ddcb1410f557298905a794d400d06c46afdadb56",
-  "animation_sha256": "ec5e8247148f32b38283157b96f630ccb8a09d4891ae93a6693e94a21297c78f",
-  "capture_browser": "Chrome 156.0.8078.80 / native captures",
-  "encoding": "WebP lossless",
-  "bytes": 30708730
+  "planet_surface_static": true,
+  "hills_and_sun_static": true,
+  "runtime_filters": 0,
+  "capture_browser": "Chrome 156.0.8078.80 / existing native captures",
+  "animation_bytes": 16938704,
+  "animation_sha256": "f87556620df6a788bda6f39b460d894ee41466fd0e586c9699c5ba0005f0d143",
+  "poster_bytes": 272112
 }

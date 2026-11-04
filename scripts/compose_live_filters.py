@@ -7,10 +7,12 @@ from profile_data import refresh,activity
 ROOT=Path(__file__).resolve().parents[1]
 DESIGN=ROOT/'design'
 
-def compose():
+def compose(freeze_world=True):
     source='data:image/png;base64,'+base64.b64encode((DESIGN/'reference.png').read_bytes()).decode()
     with gzip.open(DESIGN/'orbital-lookups.json.gz','rt',encoding='utf-8') as f:data=json.load(f)
     region='x="0" y="0" width="1136" height="1384"'
+    hills='' if freeze_world else '<rect y="1184" width="1136" height="200"/>'
+    world='' if freeze_world else '<g mask="url(#surface-only)"><g filter="url(#orbits)"><g mask="url(#surface-only)"><use href="#reference"/></g></g></g><g mask="url(#sun-only)"><g filter="url(#orbits)"><g mask="url(#sun-only)"><use href="#reference"/></g></g></g>'
     output=f'''<svg xmlns="http://www.w3.org/2000/svg" width="1136" height="1384" viewBox="0 0 1136 1384" role="img" aria-labelledby="title desc">
 <title id="title">Shreyas Singh — independently orbiting particle artwork</title>
 <desc id="desc">Shreyas Singh — developer, builder and student. The reference's planet crescent, crossing dust ribbons, mountain folds and small sun, with grain travelling around the planet and wind following the hills. Featured projects: JanSamadhan, NyayaAI, ARTERY and Adaptive Cache Simulator. Activity uses actual GitHub contributions. Project and contact links follow the artwork.</desc>
@@ -39,7 +41,7 @@ def compose():
 <feComposite in="litA" in2="litB" operator="arithmetic" k2="1" k3="1" {region}/>
 </filter>
 <filter id="feather"><feGaussianBlur stdDeviation="3"/></filter>
-<mask id="moving-regions" maskUnits="userSpaceOnUse"><g fill="white" filter="url(#feather)"><path d="M376 112 570 106 1136 106 1136 491 506 508 167 499 163 453 329 395 375 331Z"/><rect y="1184" width="1136" height="200"/></g><g fill="black"><rect x="65" y="355" width="286" height="96"/><rect y="40" width="1136" height="67"/><rect y="509" width="1136" height="672"/><rect x="865" y="1260" width="246" height="64"/></g></mask>
+<mask id="moving-regions" maskUnits="userSpaceOnUse"><g fill="white" filter="url(#feather)"><path d="M376 112 570 106 1136 106 1136 491 506 508 167 499 163 453 329 395 375 331Z"/>{hills}</g><g fill="black"><rect x="65" y="355" width="286" height="96"/><rect y="40" width="1136" height="67"/><rect y="509" width="1136" height="672"/><rect x="865" y="1260" width="246" height="64"/></g></mask>
 <mask id="surface-only" maskUnits="userSpaceOnUse"><circle cx="752" cy="293" r="139" fill="white"/><path d="M450 463.5 1100 223" fill="none" stroke="black" stroke-width="50"/></mask>
 <mask id="space-only" maskUnits="userSpaceOnUse"><rect width="1136" height="1384" fill="white"/><circle cx="752" cy="293" r="139" fill="black"/><path d="M450 463.5 1100 223" fill="none" stroke="white" stroke-width="50"/><circle cx="147" cy="1222" r="18" fill="black"/></mask>
 <mask id="sun-only" maskUnits="userSpaceOnUse"><circle cx="147" cy="1222" r="14" fill="white"/></mask>
@@ -47,8 +49,7 @@ def compose():
 <use href="#reference"/>
 <g class="moving" mask="url(#moving-regions)">
 <g mask="url(#space-only)"><g filter="url(#orbits)"><g mask="url(#moving-regions)"><g mask="url(#space-only)"><use href="#reference"/></g></g></g></g>
-<g mask="url(#surface-only)"><g filter="url(#orbits)"><g mask="url(#surface-only)"><use href="#reference"/></g></g></g>
-<g mask="url(#sun-only)"><g filter="url(#orbits)"><g mask="url(#sun-only)"><use href="#reference"/></g></g></g>
+{world}
 </g>
 {activity()}
 </svg>'''
