@@ -59,6 +59,11 @@ counts do not establish that every unique frame was presented, and main-thread
 throttling does not emulate a whole low-end computer.
 See `design/performance-verification.json` and `LOADING-RESEARCH.md`.
 
+The same image also displayed and moved before completion from GitHub's public
+host in a 1 MiB/s test, first observed at 678 ms and 1320 ms respectively. A fresh
+reduced-motion visit downloaded only the poster and body. Hosted desktop/mobile
+layout and motion checks are recorded in `design/hosted-verification.json`.
+
 ## Rebuild
 
 The daily refresh uses Python's standard library only:

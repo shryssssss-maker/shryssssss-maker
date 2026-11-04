@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-05",
+  "preview_commit": "c59ecbb",
+  "desktop_gap_css_px": 0,
+  "mobile_gap_css_px": 0.000030517578125,
+  "mobile_horizontal_overflow": false,
+  "native_composition": {
+    "resolution": [
+      1136,
+      1384
+    ],
+    "changed_pixels_outside_activity": 0
+  },
+  "hosted_screenshot_comparison": {
+    "planet_changed_pixels_above_two_levels": 0,
+    "orbit_changed_pixels_above_two_levels": 62915,
+    "hills_changed_pixels_above_two_levels": 0,
+    "reduced_motion_max_channel_delta": 0
+  },
+  "fresh_reduced_motion": {
+    "selected": "poster-576700f1946b.webp",
+    "animated_image_requested": false,
+    "verified_in_fresh_context": true
+  },
+  "public_host_incremental_test": {
+    "rate": 1048576,
+    "response": {
+      "status": 200,
+      "mime": "application/octet-stream"
+    },
+    "samples": [
+      {
+        "ms": 678,
+        "received": 425759,
+        "visible": 60376,
+        "changed": 0,
+        "complete": false,
+        "naturalWidth": 1136
+      },
+      {
+        "ms": 1320,
+        "received": 1132259,
+        "visible": 60882,
+        "changed": 88470,
+        "complete": false,
+        "naturalWidth": 1136
+      },
+      {
+        "ms": 1962,
+        "received": 1802759,
+        "visible": 61838,
+        "changed": 89678,
+        "complete": false,
+        "naturalWidth": 1136
+      },
+      {
+        "ms": 2605,
+        "received": 2478152,
+        "visible": 63260,
+        "changed": 91799,
+        "complete": false,
+        "naturalWidth": 1136
+      }
+    ]
+  },
+  "transfer": {
+    "animation_bytes": 16938704,
+    "body_gzip_bytes": 365840,
+    "total_bytes": 17304544,
+    "previous_gzip_bytes": 32306086,
+    "reduction_percent": 46.43565302215812
+  },
+  "limitations": [
+    "Public-host samples were taken about 0.6 seconds apart; these are upper bounds on first observed visibility and motion, not exact paint timestamps.",
+    "The CDN was warm; a cold edge, connection latency, and available throughput can change results.",
+    "The initial loop can buffer below the animation bitrate."
+  ]
+}

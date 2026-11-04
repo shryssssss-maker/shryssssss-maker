@@ -104,6 +104,20 @@ through the 6.5-second observation. These timestamps come from image analysis of
 screencast frames, not the browser's First Contentful Paint metric or a public
 GitHub speed guarantee. CDN latency, caching, and connection quality vary.
 
+The actual GitHub-hosted WebP was subsequently tested with browser caching
+disabled and a 1 MiB/s transfer limit. At the first sampled screenshot, 678 ms,
+the artwork was visible; at 1320 ms, orbital pixels had changed. The image was
+still incomplete throughout that test. These are sampled upper bounds, not
+exact first-paint timestamps, and the CDN edge was warm. The hosted normal-motion
+payload measured 16,938,704 bytes for the hero plus 365,840 bytes for the gzipped
+body, or 17,304,544 bytes total: 46.4% less than the previous transfer.
+
+GitHub desktop and phone layouts had no visible inter-image gap or horizontal
+overflow. Hosted screenshots showed moving dust, a still planet and landscape,
+and a completely still reduced-motion view. A fresh reduced-motion context
+requested the small poster and body without requesting the animated file.
+See `design/hosted-verification.json`.
+
 The stored animation remains 30 fps. Software-rendered tests with 6× main-thread
 throttling had median intervals near 33 ms, some initial pauses, and 90 display
 draws in three seconds after a tab switch. This is not a whole-machine low-end
